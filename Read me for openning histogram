@@ -1,0 +1,3 @@
+For openning Histograms and tables, a javascript code is provided. This code renderises a html file with the requested charts. To use it just open the html file and click in "Choose Folder" in the top-left corner, then load the output file from Hadoop project. 
+
+Note: Every folder has different javascript code..   
