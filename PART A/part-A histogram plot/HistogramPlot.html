@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+  html, body {
+  width: 90%;
+  height: 90%;
+  margin: 0px;
+}
+
+#chartdiv {
+    width: 120%;
+    height: 120%;
+}
+</style>
+<head>
+  <title>Histogram</title>
+</head>
+<body>
+  <input type="file" id="file-input" />
+  <h3 align="center">Frequency of length of messages during Olympics in Rio de Janeiro </h3>
+  <pre id="file-content"></pre>
+  <div id="chartdiv"></div>
+
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+
+<script type="text/javascript">
+
+document.getElementById('file-input')
+  .addEventListener('change', readSingleFile, false);
+
+    function readSingleFile(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contents = e.target.result;
+    var lines = contents.split("\n");
+    var data = []
+    for (let line of lines){
+      elements = line.split("\t");
+      console.log(elements[0] + " : " + elements[1]);
+      var r = new Object();
+      r.category = elements[0];
+      r.count = parseInt(elements[1]);
+      data.push(r);
+    }
+
+     var chart = AmCharts.makeChart("chartdiv", {
+  "type": "serial",
+  "theme": "light",
+  "columnWidth": 1,
+  "dataProvider": data,
+  "graphs": [{
+    "fillColors": "#c55",
+    "fillAlphas": 0.9,
+    "lineColor": "#fff",
+    "lineAlpha": 0.7,
+    "type": "column",
+    "valueField": "count",
+    "fontSize": 18
+  }],
+  "categoryField": "category",
+  "categoryAxis": {
+    "startOnAxis": false,
+    "title": "Length of Tweets",
+    "labelRotation": (-90),
+    "tickLength": 10,
+    "fontSize": 18
+ },
+  "valueAxes": [{
+    "title": "Count"
+  }]
+
+
+});
+
+    //displayContents(contents);
+  };
+
+  reader.readAsText(file);
+}
+
+function displayContents(contents) {
+  var element = document.getElementById('file-content');
+  element.textContent = contents;
+}
+  </script>>
+</body>
+</html>>

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+th {
+    background-color: #62A5D8;
+    color: white;
+}
+}
+
+</style>
+<head>
+  <title>Table of top 30 Athletes</title>
+</head>
+<body>
+  <input type="file" id="file-input" />
+  <h3 align="center">Table of Top 30 Athletes</h3>
+  <pre id="file-content"></pre>
+  <div id="chartdiv"></div>
+
+<table id="table" border="1" align="center">
+  <tr>
+    <th>Athletes</th>
+    <th>Count</th>
+  </tr>
+
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+
+<script type="text/javascript">
+
+document.getElementById('file-input')
+  .addEventListener('change', readSingleFile, false);
+
+    function readSingleFile(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contents = e.target.result;
+    var lines = contents.split("\n");
+    var data = []
+
+    for (let line of lines){
+      elements = line.split("\t");
+      console.log(elements[0] + " : " + elements[1]);
+      var r = new Object();
+      r.category = elements[0];
+      r.count = parseInt(elements[1]);
+      data.push(r);
+
+
+    }
+    tableCreate(GetTop((data)));
+
+  };
+
+  reader.readAsText(file);
+}
+  function tableCreate(data){
+    var t = document.getElementById('table')
+  for (var i = 0; i < data.length; i++){
+    var tr = document.createElement('tr');
+
+          var td = document.createElement('td');
+          td.innerHTML = data[i].category;
+          tr.appendChild(td);
+          var td = document.createElement('td');
+          td.innerHTML = data[i].count;
+          tr.appendChild(td);
+
+       t.appendChild(tr);
+    }
+}
+  function GetTop(array){
+  array.sort(function(a, b) {
+                   return  a.count < b.count ? 1 : -1;
+                 });
+  return array.slice(0, 30);
+}
+  </script>
+
+</body>
+</html>
