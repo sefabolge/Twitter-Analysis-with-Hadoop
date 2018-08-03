@@ -4,14 +4,14 @@ PART A. MESSAGE LENGTH ANALYSIS
 Create a Histogram plot that depicts the distribution of tweet sizes (measured in number of characters) among the Twitter dataset. To make the data more readable, the histogram must aggregate bars in groups of 5 (that is, first bar counts tweets of length 1-5, second bar counts tweets 6-10, and so on) as part of your MapReduce job. Your MapReduce program must compute the histogram bins for a correct solution. Aggregating bins outside MapReduce will deduct marks from the complete grade.
 
 
-PART B. TIME ANALYSIS (45%)
+PART B. TIME ANALYSIS
 1.Create a bar plot showing the number of Tweets that were posted each hour of the event. You should aggregate together all the messages emitted at the same hour, regardless of the day the messages were sent (hence, you will have 24 different groups). When checking the correctness of your results, keep in mind the timezone of the 2016 Olympic games, as that should give you base expectations about the prime time when the main activities occurred.
 
 2.For the most popular hour of the games, compute the top 10 hashtags that were emitted during that hour. Hashtags are words contained inside the tweet, starting with the hashcode (#) character. Does that information provide you any hint on the main events/activities that took place at peak time?
 
 
-PART C. SUPPORT ANALYSIS (20%)
-The goal of the final part of the coursework is to compute the 30 athletes that received the highest support, according to the Twitter messages of our dataset. Please note that there might be a bias towards English speaking countries/athletes, because of the methodology used when collecting the dataset.  
+PART C. SUPPORT ANALYSIS
+The goal of the final part of the project is to compute the 30 athletes that received the highest support, according to the Twitter messages of our dataset. Please note that there might be a bias towards English speaking countries/athletes, because of the methodology used when collecting the dataset.  
 
 In this final section, you will have to use an additional dataset, containing the list of Rio 2016 athletes that obtained a medal, and their discipline. The dataset can be found at:
 
