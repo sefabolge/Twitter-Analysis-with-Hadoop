@@ -24,3 +24,22 @@ You need to match full names, exactly as they are written in the athletes datase
 1.Draw a table with the top 30 athletes in number of mentions across the dataset. For each athlete, include the number of mentions retrieved.  For this question you can sort results and compute the top X outside your MapReduce code.
 
 2.Draw a table with the top 20 sports according to the mentions of olympic athletes captured. For resolving athletes into sports use the medalistsrio secondary dataset. For this question you can sort results and compute the top X outside your MapReduce code.
+
+
+--DATASET--
+
+A MapReduce job that points to that folder as input will receive as Text value the whole contents for a single entry (tweet), in the format:
+
+epoch_time;tweetId;tweet(including #hashtags);device
+
+epoch_time provides the time the message was published, expressed in miliseconds since 01-01-1970.
+
+tweetId is a unique identifier per message.
+
+tweet includes the message itself. hashtags are in the tweets, identified by the hash symbol.
+
+device provides additional meta-information, including the type of device/app used to submit the message, and a shortened url to access the message.
+
+An example entry for the dataset is: 
+
+1469453965000;757570957502394369;Over 30 million women footballers in the world. Most of us would trade places with this lot for #Rio2016  https://t.co/Mu5miVJAWx;<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>
